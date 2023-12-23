@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <script>
+        var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') ||
+          CSS.supports('top: constant(a)'))
+        document.write(
+          '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' +
+          (coverSupport ? ', viewport-fit=cover' : '') + '" />')
+    </script>
+    <title></title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body onclick="playAudio()">
+    <div class="container">
+    <img class="reindeer" src="./lib/reindeer.gif" alt="">
+    <div class="merry">Merry Christmas</div>
+    <div class="star"></div>
+    <ul class="tree" id="tree"></ul>
+</div>
+<audio id="myAudio" loop>
+    <source src="./lib/merry.mp3" type="audio/mpeg">
+</audio>
+    <script type="module">
+        function createTree(){
+            for (let i=0;i<180;i++) {
+                let li=document.createElement('li');
+                li.style.cssText='height:calc(60vh / 180 * '+i+'); animation-delay:calc(-30s / 180 * '+i+');';
+                document.getElementById('tree').appendChild(li);
+            }
+        }
+        window.addEventListener('load',()=>{
+            createTree();
+        })
+    </script>
+
+    <script>
+        function createSnowflakes() {
+            const snowflakes = document.createElement('div');
+            snowflakes.className = 'snowflakes';
+
+            for (let i = 0; i < 30; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.style.left = Math.random() * 100 + 'vw';
+                snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+                snowflake.style.opacity = Math.random();
+                snowflakes.appendChild(snowflake);
+            }
+
+            document.body.appendChild(snowflakes);
+        }
+
+        function createHearts() {
+            const hearts = document.createElement('div');
+            hearts.className = 'hearts';
+
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+                heart.style.opacity = Math.random();
+                hearts.appendChild(heart);
+            }
+
+            document.body.appendChild(hearts);
+        }
+
+        window.addEventListener('load', () => {
+            createSnowflakes();
+            createHearts();
+        });
+        function playAudio() {
+        var x = document.getElementById("myAudio");
+        x.play();
+    }
+    </script>
+</body>
+</html>
