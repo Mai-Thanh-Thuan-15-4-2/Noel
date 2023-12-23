@@ -82,12 +82,28 @@ body{
 
 @keyframes move {
   0% { left: 0; }
-  50% { left: calc(100% - 50vw); } /* Điều chỉnh giá trị này để thay đổi khoảng cách di chuyển */
+  25% { left: calc(100% - 75vw); } 
+  50% { left: calc(100% - 50vw); } 
+  75% { left: calc(100% - 25vw); } 
   100% { left: calc(100% - 10vw); }
 }
-.star:hover::before{
-    content: "NOEL VUI VẺ NHA!";
+.star:hover::before {
+  content: "NOEL VUI VẺ NHA!";
+  color: #d8334a;
+  animation: changeColor 7s linear infinite;
 }
+
+@keyframes changeColor {
+  0% { color: red; }
+  14% { color: orange; }
+  28% { color: yellow; }
+  42% { color: green; }
+  57% { color: blue; }
+  71% { color: indigo; }
+  85% { color: violet; }
+  100% { color: red; }
+}
+
 ul{
     padding: 0;
 }
